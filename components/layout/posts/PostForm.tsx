@@ -14,7 +14,7 @@ const PostForm = () => {
 
     return (
         <form>
-            <FormField id="title" register={register} errors={errors} placeholder="Title" disabled={loading} type="password" />
+            <FormField id="title" register={register} errors={errors} placeholder="Title" disabled={loading}  />
         </form>
     );
 }
