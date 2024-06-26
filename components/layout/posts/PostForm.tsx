@@ -13,12 +13,13 @@ const PostForm = () => {
     })
 
     const onSubmit: SubmitHandler<PostSchemaType> = (data)=>{
-        alert(data);
+        console.log(data);
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <FormField id="title" register={register} errors={errors} placeholder="Title" disabled={loading}  />
+            <button>Submit</button>
         </form>
     );
 }

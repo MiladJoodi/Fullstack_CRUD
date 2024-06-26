@@ -11,6 +11,9 @@ interface FormFieldProps<T extends FieldValues> {
 }
 
 const FormField = <T extends FieldValues>({ id, type, disabled, register, errors, placeholder }: FormFieldProps<T>) => {
+
+    const message = errors[id] && errors[id]?.message as string
+
     return (
         <div>
             <input
@@ -22,6 +25,7 @@ const FormField = <T extends FieldValues>({ id, type, disabled, register, errors
                 type={type}
                 className={cn("w-full p-3 my-2 outline-none rounded-md disabled:opacity-70 disabled:cursor-not-allowed border border-slate-300", errors[id] && "border-rose-400")}
             />
+            {message && <span className="text-sm text-rose-400">{message}</span>}
         </div>
     );
 }
