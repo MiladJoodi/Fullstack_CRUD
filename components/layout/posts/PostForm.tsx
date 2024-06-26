@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { PostSchema, PostSchemaType } from "../../../schemas/PostSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import FormField from "../../form/FormField";
 
 const PostForm = () => {
 
@@ -10,7 +11,7 @@ const PostForm = () => {
 
     return (
         <form>
-            
+            <FormField id="title" register={register} />
         </form>
     );
 }
