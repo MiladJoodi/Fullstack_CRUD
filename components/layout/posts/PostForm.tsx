@@ -9,9 +9,9 @@ const PostForm = () => {
     })
 
     return (
-        <div>
-            Enter
-        </div>
+        <form>
+            
+        </form>
     );
 }
 
