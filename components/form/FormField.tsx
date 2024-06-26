@@ -1,4 +1,5 @@
 import { FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form";
+import { cn } from "../../lib/utils";
 
 interface FormFieldProps<T extends FieldValues> {
     id: string;
@@ -12,7 +13,15 @@ interface FormFieldProps<T extends FieldValues> {
 const FormField = <T extends FieldValues> ({ id, type, disabled, register, errors, placeholder }: FormFieldProps<T>) => {
     return (
         <div>
-            <input autoComplete="off" id={id} disabled={disabled} {...register(id as Path<T>)} placeholder={placeholder} type={type} />
+            <input 
+            autoComplete="off" 
+            id={id} 
+            disabled={disabled} 
+            {...register(id as Path<T>)} 
+            placeholder={placeholder} 
+            type={type}
+            className={cn("w-full p-3 my-2 outline-none rounded-md disabled:opacity-70 disabled:cursor-not-allowed border border-slate-300")}
+            />
         </div>
     );
 }
