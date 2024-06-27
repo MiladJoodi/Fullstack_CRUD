@@ -5,7 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import FormField from "../../form/FormField";
 import { useState } from "react";
 import Button from "../../form/Button";
-import { BiArrowFromRight } from "react-icons/bi";
+import { BiArrowFromLeft } from "react-icons/bi";
+import { cn } from "../../../lib/utils";
+import Header from "../../common/Header";
 
 const PostForm = () => {
     const [loading, setLoading] = useState()
@@ -19,9 +21,10 @@ const PostForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={cn("flex flex-col max-w-[500px] m-auto mt-8")}>
+            <Header title={"Create Post"} />
             <FormField id="title" register={register} errors={errors} placeholder="Title" disabled={loading}  />
-            <Button label="Submit" outline icon={BiArrowFromRight} />
+            <Button label={loading ? "Submitting" : "Submit"} disabled={loading} icon={loading ? undefined : BiArrowFromLeft} />
         </form>
     );
 }
