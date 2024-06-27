@@ -6,13 +6,13 @@ interface ButtonProps {
     disabled?: boolean;
     outline?: boolean;
     small?: boolean;
-    className?: boolean;
+    className?: string;
     icon?: IconType;
     type?: 'submit' | 'reset' | 'button' | undefined;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>)=> void;
 }
 
-const Button: React.FC<ButtonProps> = ({label, disabled, outline, small, className, icon, type, onClick}) => {
+const Button: React.FC<ButtonProps> = ({label, disabled, outline, small, className, icon: Icon, type, onClick}) => {
     return (
         <button
         type={type}
@@ -24,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({label, disabled, outline, small, classNa
             className && className
         )}
         >
+            {Icon && <Icon size={20} />}
             {label}
             </button>
     );
