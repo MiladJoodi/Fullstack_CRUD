@@ -1,4 +1,5 @@
 import { IconType } from "react-icons";
+import { cn } from "../../lib/utils";
 
 interface ButtonProps {
     label: string;
@@ -17,7 +18,11 @@ const Button: React.FC<ButtonProps> = ({label, disabled, outline, small, classNa
         type={type}
         onClick={onClick}
         disabled={disabled}
-        className={cn("disabled:opacity-70 disabled:cursor-not-allowed")}
+        className={cn("disabled:opacity-70 disabled:cursor-not-allowed rounded-md hover:opacity-80 transition w-auto border-slate-300 flex items-center justify-center gap-2 py-3 px-5 border-2 bg-slate-700 text-white my-2",
+            outline && "bg-transparent text-slate-700",
+            small && "text-small py-1 px-2 border-[1px]",
+            className && className
+        )}
         >
             {label}
             </button>
