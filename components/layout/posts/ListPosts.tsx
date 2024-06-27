@@ -1,4 +1,5 @@
 import { getPosts } from "../../../actions/postServerActions";
+import DeletePost from "./DeletePost";
 
 const ListPosts = async () => {
 
@@ -12,7 +13,7 @@ const ListPosts = async () => {
                         <span>{post.title}</span>
                         <div className="flex gap-2 items-center">
                             <div>E</div>
-                            <div>D</div>
+                            <DeletePost post={post} />
                         </div>
                         </div>
                 })}
