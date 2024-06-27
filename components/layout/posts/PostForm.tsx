@@ -4,6 +4,7 @@ import { PostSchema, PostSchemaType } from "../../../schemas/PostSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormField from "../../form/FormField";
 import { useState } from "react";
+import Button from "../../form/Button";
 
 const PostForm = () => {
     const [loading, setLoading] = useState()
@@ -19,7 +20,7 @@ const PostForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <FormField id="title" register={register} errors={errors} placeholder="Title" disabled={loading}  />
-            <button>Submit</button>
+            <Button label="Submit" />
         </form>
     );
 }
