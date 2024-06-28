@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache"
 import prismadb from "../lib/prismadb"
 import { PostSchema, PostSchemaType } from "../schemas/PostSchema"
+// import { Post } from "@prisma/client"
 
 // Create Post
 export const createPost = async (values: PostSchemaType) => {

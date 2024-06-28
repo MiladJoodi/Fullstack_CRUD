@@ -1,5 +1,6 @@
 "use client"
 
+// import { Post } from "@prisma/client";
 import { useState } from "react";
 import { ImSpinner } from "react-icons/im";
 import { MdDelete } from "react-icons/md";
