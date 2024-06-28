@@ -45,7 +45,7 @@ export const getPosts = async ()=> {
 }
 
 // Delete
-export const deletePost = async(post: Post)=> {
+export const deletePost = async(post: any)=> {
     try {
         await prismadb.post.delete({
             where: {
@@ -60,7 +60,7 @@ export const deletePost = async(post: Post)=> {
 }
 
 // Update
-export const editPost = async (post: Post, title: string)=>{
+export const editPost = async (post: any, title: string)=>{
     try{
         await prismadb.post.update({
             where:{
