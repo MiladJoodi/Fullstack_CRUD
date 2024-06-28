@@ -1,8 +1,6 @@
 # Fullstack CRUD Application
 
-<h4>Fullstack CRUD Application using Typescript, Next.js Server Actions, Prisma , Tailwind CSS, PostgresSQL on Neon, clsx, react-icons, tailwind-merge.
-
-  🚀</h4>  
+<h4>Fullstack CRUD Application using Typescript, Next.js Server Actions, Prisma , Tailwind CSS, PostgresSQL on Neon, clsx, react-icons, tailwind-merge, React hook form & Zod. 🚀</h4>  
 
 [Demo](https://fullstack-crud-nine.vercel.app/).\
 Thank you sincerely. 🙏
