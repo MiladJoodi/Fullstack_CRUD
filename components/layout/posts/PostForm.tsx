@@ -8,15 +8,18 @@ import Button from "../../form/Button";
 import { BiArrowFromLeft } from "react-icons/bi";
 import { cn } from "../../../lib/utils";
 import Header from "../../common/Header";
-import { createPost } from "../../../actions/postServerActions";
+import { createPost, editPost } from "../../../actions/postServerActions";
 
-const PostForm = () => {
+const PostForm = ({post, handleCloseEditing} : {post?: any, handleCloseEditing?: ()=> void}) => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState<string | undefined>('')
     const [error, setError] = useState<string | undefined>('')
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<PostSchemaType>({
-        resolver: zodResolver(PostSchema)
+        resolver: zodResolver(PostSchema),
+        defaultValues: {
+            title: post ? post.title : ''
+        }
     })
 
     useEffect(()=>{
@@ -33,15 +36,28 @@ const PostForm = () => {
 
     const onSubmit: SubmitHandler<PostSchemaType> = (data) => {
         setLoading(true)
-        createPost(data).then(data => {
+
+        if(post){
+            editPost(post, data.title).then(data=> {
+                setError(data.error)
+                setSuccess(data.success)
+                if(data.success && handleCloseEditing){
+                    handleCloseEditing()
+                }
+            }).finally(()=> setLoading(false))
+        }else{
+            createPost(data).then(data => {
             setError(data.error)
             setSuccess(data.success)
         }).finally(() => setLoading(false))
+        }
+
+        
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={cn("flex flex-col max-w-[500px] m-auto mt-8")}>
-            <Header title={"Create Post"} />
+        <form onSubmit={handleSubmit(onSubmit)} className={cn("flex flex-col max-w-[500px] m-auto mt-8", post && 'mt-0')}>
+            <Header title={post ? "Edit Post" : "Create Post"} lg />
             <FormField id="title" register={register} errors={errors} placeholder="Title" disabled={loading} />
             
             {error && <div className="text-sm text-rose-400">{error}</div>}

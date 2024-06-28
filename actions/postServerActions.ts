@@ -69,7 +69,7 @@ export const editPost = async (post: any, title: string)=>{
             data: {title}
         })
         revalidatePath("/")
-        return {seccess: 'Post edited'}
+        return {success: 'Post edited'}
     } catch(error){
         return {error : "Server error"}
     }
