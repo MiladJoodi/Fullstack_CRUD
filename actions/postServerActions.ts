@@ -58,3 +58,19 @@ export const deletePost = async(post: Post)=> {
         return {error: "Server Error!"}
     }
 }
+
+// Update
+export const editPost = async (post: Post, title: string)=>{
+    try{
+        await prismadb.post.update({
+            where:{
+                id: post.id
+            },
+            data: {title}
+        })
+        revalidatePath("/")
+        return {seccess: 'Post edited'}
+    } catch(error){
+        return {error : "Server error"}
+    }
+}
